@@ -4,3 +4,4 @@ sudo wget "https://launchpad.net/~univention-dev/+archive/ubuntu/ppa/+files/univ
 sudo wget "https://launchpad.net/~univention-dev/+archive/ubuntu/ppa/+files/univention-domain-join_1.0-28ubuntu1_all.deb"
 sudo apt update
 sudo apt install python3-dnspython python3-ipy python3-ldap -y
+sudo apt install sssd libnss-sss libpam-sss libsss-sudo heimdal-clients ntpdate sshpass
