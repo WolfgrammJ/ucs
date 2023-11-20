@@ -1,0 +1,7 @@
+- name: copy sudoers_ansible
+  ansible.builtin.copy:
+    src: files/etc/sudoers.d/w_ansible
+    dest: /etc/sudoers.d/ansible
+    owner: root
+    group: root
+    mode: 0440

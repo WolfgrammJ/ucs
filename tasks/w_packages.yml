@@ -1,0 +1,14 @@
+- name: Install required packages
+  ansible.builtin.apt:
+    name:
+      - python3-dnspython
+      - python3-ipy
+      - python3-ldap
+      - sssd
+      - libnss-sss
+      - libpam-sss
+      - libsss-sudo
+      - heimdal-clients
+      - ntpdate
+      - sshpass
+    update_cache: yes

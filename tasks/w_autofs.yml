@@ -1,0 +1,51 @@
+##########################################################################################
+# MOUNT FOR DAMANTEC-SHARES
+##########################################################################################
+
+# Create directory "/mnt/dmt"
+- name: Create directory "/mnt/dmt"
+  ansible.builtin.file:
+    path: /mnt/dmt
+    state: directory
+
+# Add map for damantec-shares to "auto.master"
+- name: Add entry for "/mnt/dmt" to auto.master
+  ansible.builtin.lineinfile:
+    path: /etc/auto.master
+    line: /mnt/dmt/ /etc/auto.damantec --timeout=180 browse
+
+
+
+
+
+##########################################################################################
+# MOUNT FOR USER-SHARE (redirected folder)
+##########################################################################################
+
+# Create directory "/mnt/user"
+- name: Create directory "/mnt/user"
+  ansible.builtin.file:
+    path: /mnt/user
+    state: directory
+
+# Add map for user-shares (redirected folders) to "auto.master"
+- name: Add entry for "/mnt/user" to auto.master
+  ansible.builtin.lineinfile:
+    path: /etc/auto.master
+    line: /mnt/user/ /etc/auto.user --timeout=180 browse
+
+
+
+
+
+##########################################################################################
+# LOGIN-SCRIPT TO CREATE USER SPECIFIC MOUNTPOINTS
+##########################################################################################
+
+- name: Copy login-script "dmt_autofs.sh" in "/etc/profile.d/"
+  ansible.builtin.copy:
+    src: files/etc/profile.d/w_dmt_autofs.sh
+    dest: /etc/profile.d/dmt_autofs.sh
+    owner: root
+    group: root
+    mode: '0755'

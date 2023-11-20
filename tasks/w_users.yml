@@ -1,0 +1,4 @@
+- name: create user "ansible"
+  ansible.builtin.user:
+    name: ansible
+    uid: 900

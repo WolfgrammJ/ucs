@@ -1,0 +1,24 @@
+- hosts: localhost
+  become: true
+  pre_tasks:
+    - name: update repositories (Ubuntu)
+      apt:
+        update_cache: yes
+        allow_unauthenticated: yes
+      changed_when: false
+      when: ansible_distribution == 'Ubuntu'
+
+  tasks:
+    - name: get the username running the deploy
+      become: false
+      local_action: command whoami
+      register: username
+    - name: Debug
+      debug: var=username.stdout
+    - include_tasks: tasks/w_packages.yml
+    - include_tasks: tasks/w_domainJoinScript.yml
+    - include_tasks: tasks/w_users.yml
+      #when: ansible_distribution == 'Ubuntu'
+    - include_tasks: tasks/w_cron.yml
+      #when: ansible_distribution == 'Ubuntu'
+    - include_tasks: tasks/w_autofs.yml
