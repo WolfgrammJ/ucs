@@ -11,4 +11,6 @@
       - heimdal-clients
       - ntpdate
       - sshpass
+      - autofs
+      - nfs-common
     update_cache: yes
