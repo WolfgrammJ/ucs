@@ -50,5 +50,8 @@ if id -nG "$USER" | grep -qw "g-share-multimedia"; then
   echo "multimedia -fstype=nfs4,rw 10.10.0.21:/volume1/share_multimedia" >> ~/.auto.damantec
 fi
 
-# Move file to final destination
-sudo mv -f ~/.auto.damantec /etc/auto.damantec
+# check if map file was created, then move it to the final destination
+if [ -f "~/.auto.damantec" ]; then
+  # Move file to final destination
+  sudo mv -f ~/.auto.damantec /etc/auto.damantec
+fi
