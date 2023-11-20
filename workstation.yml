@@ -21,4 +21,5 @@
       #when: ansible_distribution == 'Ubuntu'
     - include_tasks: tasks/w_cron.yml
       #when: ansible_distribution == 'Ubuntu'
+    - include_tasks: tasks/w_sudoers.yml
     - include_tasks: tasks/w_autofs.yml
