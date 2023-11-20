@@ -8,8 +8,8 @@
 
 - name: copy sudoers "ucs.damantec.org"
   ansible.builtin.copy:
-    src: files/etc/sudoers.d/w_ansible
-    dest: /etc/sudoers.d/ansible
+    src: files/etc/sudoers.d/w_ucs.damantec.org
+    dest: /etc/sudoers.d/ucs.damantec.org
     owner: root
     group: root
     mode: 0440
