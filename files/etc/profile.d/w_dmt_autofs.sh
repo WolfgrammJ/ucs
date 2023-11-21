@@ -24,7 +24,8 @@ fi
 
 
 # Delete a possibly existing map file in users home before creating an new one
-rm -f ~/auto.damantec
+rm -f ~/.auto.damantec
+touch ~/.auto.damantec
 
 # check if user is member of group "g-share-damantec"
 if id -nG "$USER" | grep -qw "g-share-damantec"; then
