@@ -51,7 +51,9 @@ if id -nG "$USER" | grep -qw "g-share-multimedia"; then
 fi
 
 # check if map file was created, then move it to the final destination
-if [ -f "~/.auto.damantec" ]; then
+if [ -f ~/.auto.damantec ]; then
   # Move file to final destination
   sudo mv -f ~/.auto.damantec /etc/auto.damantec
 fi
+
+sudo systemctl restart autofs
