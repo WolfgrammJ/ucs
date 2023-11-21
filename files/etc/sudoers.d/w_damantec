@@ -5,4 +5,4 @@
 %g-sudo-permissions-apt ALL=(ALL:ALL) /usr/bin/apt search *, /usr/bin/apt update, /usr/bin/apt list --upgradable, /usr/bin/apt upgrade
 
 # Permissions needed to map network drives with autofs (/etc/profile.d/dmt_autofs.sh)
-%Domain\ Users ALL=(ALL:ALL) NOPASSWD: /usr/bin/mv -f /home/*/.auto.user /etc/auto.user, /usr/bin/mv -f /home/*/.auto.damantec /etc/auto.damantec, /user/bin/systemctl restart autofs
+%Domain\ Users ALL=(ALL:ALL) NOPASSWD: /usr/bin/mv -f /home/*/.auto.user /etc/auto.user, /usr/bin/mv -f /home/*/.auto.damantec /etc/auto.damantec, /usr/bin/systemctl restart autofs
