@@ -1,0 +1,6 @@
+- name: Setup UCS Master in "/etc/hosts"
+  become: yes
+  ansible.builtin.lineinfile:
+    path: /etc/hosts
+    insertbefore: '^127\.0\.0\.1'
+    line: 10.10.0.5 dmtslinucs001.ucs.damantec.org
