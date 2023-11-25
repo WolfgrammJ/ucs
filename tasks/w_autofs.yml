@@ -52,6 +52,6 @@
 
 # Call the script "dmt_autofs.sh" at user login with default shell "/bin/zsh"
 - name: Add reference to "/etc/zsh/zprofile" for ZSH
-  ansible.builtin.fileinline:
+  ansible.builtin.lineinfile:
     path: /etc/zsh/zprofile
     line: /etc/profile.d/dmt_autofs.sh
