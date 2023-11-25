@@ -13,4 +13,5 @@
       - sshpass
       - autofs
       - nfs-common
+      - zsh #required since the domain user receives "/bin/zsh" as default shell
     update_cache: yes
