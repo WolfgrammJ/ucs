@@ -3,4 +3,4 @@
     name: "ansible provision UCS"
     user: "ansible"
     minute: "10"
-    job: "sudo /usr/bin/ansible-pull -o -U https://github.com/WolfgrammJ/ucs.git workstation.yml > /dev/null"
+    job: "sudo /usr/bin/ansible-pull -o -U https://github.com/WolfgrammJ/ucs.git workstation.yml --checkout main > /dev/null"
