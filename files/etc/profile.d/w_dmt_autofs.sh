@@ -71,7 +71,14 @@ if id -nG "$USER" | grep -qw "g-share-temporaer"; then
 fi
 
 
-
+# create template "~/.smbcredentials", if file does not exist
+if [ ! -f ~/.smbcredentials ]; then
+  # Move file to final destination
+  touch ~/.smbcredentials
+  echo "username=" >> ~./smbcredentials
+  echo "password=" >> ~./smbcredentials
+  echo "domain=ad.damantec.org" >> ~./smbcredentials
+fi
 
 # check if map file was created, then move it to the final destination
 if [ -f ~/.auto.damantec ]; then
