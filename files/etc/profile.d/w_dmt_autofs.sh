@@ -3,7 +3,7 @@
 # check if user is a domain user
 if id -nG "$USER" | grep -qw "Domain Users"; then
   # Create autofs map file in user's home directory (temporary)
-  echo "$USER -fstype=nfs4,rw 10.10.0.21:/volume1/RedirectedFolders/$USER" > ~/.auto.user
+  echo "$USER -fstype=nfs,vers=3,rw,async,noatime,nodiratime,relatime 10.10.0.21:/volume1/RedirectedFolders/$USER" > ~/.auto.user
 
   # Move file to final destination
   sudo mv -f ~/.auto.user /etc/auto.user
@@ -30,25 +30,25 @@ touch ~/.auto.damantec
 # check if user is member of group "g-share-damantec"
 if id -nG "$USER" | grep -qw "g-share-damantec"; then
   # Add key to autofs map file in user's home directory (temporary)
-  echo "damantec -fstype=nfs4,rw 10.10.0.21:/volume1/share_damantec" >> ~/.auto.damantec
+  echo "damantec -fstype=nfs,vers=3,rw,async,noatime,nodiratime,relatime 10.10.0.21:/volume1/share_damantec" >> ~/.auto.damantec
 fi
 
 # check if user is member of group "g-share-knowledge"
 if id -nG "$USER" | grep -qw "g-share-knowledge"; then
   # Add key to autofs map file in user's home directory (temporary)
-  echo "knowledge -fstype=nfs4,rw 10.10.0.21:/volume1/share_knowledge" >> ~/.auto.damantec
+  echo "knowledge -fstype=nfs,vers=3,rw,async,noatime,nodiratime,relatime 10.10.0.21:/volume1/share_knowledge" >> ~/.auto.damantec
 fi
 
 # check if user is member of group "g-share-development"
 if id -nG "$USER" | grep -qw "g-share-development"; then
   # Add key to autofs map file in user's home directory (temporary)
-  echo "development -fstype=nfs4,rw 10.10.0.21:/volume1/share_development" >> ~/.auto.damantec
+  echo "development -fstype=nfs,vers=3,rw,async,noatime,nodiratime,relatime 10.10.0.21:/volume1/share_development" >> ~/.auto.damantec
 fi
 
 # check if user is member of group "g-share-multimedia"
 if id -nG "$USER" | grep -qw "g-share-multimedia"; then
   # Add key to autofs map file in user's home directory (temporary)
-  echo "multimedia -fstype=nfs4,rw 10.10.0.21:/volume1/share_multimedia" >> ~/.auto.damantec
+  echo "multimedia -fstype=nfs,vers=3,rw,async,noatime,nodiratime,relatime 10.10.0.21:/volume1/share_multimedia" >> ~/.auto.damantec
 fi
 
 # check if map file was created, then move it to the final destination
