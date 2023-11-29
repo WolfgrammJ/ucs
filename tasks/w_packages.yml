@@ -14,4 +14,6 @@
       - autofs
       - nfs-common
       - zsh #required since the domain user receives "/bin/zsh" as default shell
+      - cifs-utils
+      - smbclient
     update_cache: yes
