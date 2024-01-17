@@ -3,7 +3,8 @@
 # check if user is a domain user
 if id -nG "$USER" | grep -qw "Domain Users"; then
   # Create autofs map file in user's home directory (temporary)
-  echo "$USER -fstype=nfs,vers=3,rw,async,noatime,nodiratime,relatime 10.10.0.21:/volume1/RedirectedFolders/$USER" > ~/.auto.user
+  #echo "$USER -fstype=nfs,vers=3,rw,async,noatime,nodiratime,relatime 10.10.0.21:/volume1/RedirectedFolders/$USER" > ~/.auto.user
+  echo "$USER -fstype=cifs,rw,noperm,vers=3.0,credentials=$HOME/.smbcredentials_ucs ://10.10.0.21/RedirectedFolders/$USERNAME" > ~/.auto.user
 
   # Move file to final destination
   sudo mv -f ~/.auto.user /etc/auto.user
@@ -79,6 +80,16 @@ if [ ! -f ~/.smbcredentials_win ]; then
   echo "password=" >> ~/.smbcredentials_win
   echo "domain=ad.damantec.org" >> ~/.smbcredentials_win
   chmod 600 ~/.smbcredentials_win
+fi
+
+# create template "$HOME/.smbcredentials_ucs", if file does not exist
+if [ ! -f ~/.smbcredentials_ucs ]; then
+  # Move file to final destination
+  touch ~/.smbcredentials_ucs
+  echo "username=$USERNAME" >> ~/.smbcredentials_ucs
+  echo "password=" >> ~/.smbcredentials_ucs
+  echo "domain=ucs.damantec.org" >> ~/.smbcredentials_ucs
+  chmod 600 ~/.smbcredentials_ucs
 fi
 
 # check if map file was created, then move it to the final destination
